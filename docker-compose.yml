@@ -9,3 +9,7 @@ services:
       - ./registry/data:/var/lib/registry
       - ./registry/auth:/auth
       - ./registry/config.yml:/etc/docker/registry/config.yml
+    logging:
+      options:
+        max-size: "100m"
+        max-file: "3"
