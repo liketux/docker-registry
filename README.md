@@ -38,27 +38,26 @@
 
 1.  Клонируйте репозиторий:
 
-
 ```
 git clone https://github.com/username/private-registry.git cd private-registry
 ```
 
-2.  Подготовьте директории:
-
+2.  Создайте secret для своего реджестри:
 
 ```
-mkdir -p registry/data registry/auth
+openssl rand -hex 32
 ```
+
+Замените в файле `registry/config.yml`  строку `INSERT_SECRET_HERE` на сгенерированный секрет
+
 
 3.  Создайте файл пользователей:
-
 
 ```
 docker run --rm --entrypoint htpasswd httpd:2 -Bbn myuser mypassword > registry/auth/htpasswd
 ```
 
 4.  Запустите Registry:
-
 
 `docker-compose up -d`
 
